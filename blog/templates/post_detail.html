@@ -23,7 +23,7 @@
               {{ comment.created_on }}
             </span>
           </p>
-          {{ comment.body | linebreaks }}
+          {{ comment.body | safe }}
         </div>
         {% endfor %}
       </div>
