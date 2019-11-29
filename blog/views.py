@@ -5,6 +5,7 @@ from .forms import CommentForm, PostForm
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+import re
 
 class RegisterView(generic.View):
     def get(self, request):
@@ -105,17 +106,5 @@ SLUG UTIL
 
 
 def slugify(text):
-    non_url_safe = ['"', '#', '$', '%', '&', '+',
-                    ',', '/', ':', ';', '=', '?',
-                    '@', '[', '\\', ']', '^', '`',
-                    '{', '|', '}', '~', "'"]
-    """
-    Turn the text content of a header into a slug for use in an ID
-    """
-    non_safe = [c for c in text if c in non_url_safe]
-    if non_safe:
-        for c in non_safe:
-            text = text.replace(c, '')
-    # Strip leading, trailing and multiple whitespace, convert remaining whitespace to _
-    text = u'_'.join(text.split())
-    return text
+    regex = re.compile('[^a-zA-Z]')
+    return regex.sub('', text)
