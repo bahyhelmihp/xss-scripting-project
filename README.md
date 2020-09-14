@@ -1,5 +1,7 @@
 ## Form XSS Experiment
+Final group project of Information Security course to demonstrate the vulnerability of a Django project when character escaping is deactivate.
 
+### Usage
 
 1. Install virtualenv if not exist
 ```pip install venv```
@@ -24,3 +26,5 @@
 
 5. Runserver on local
 ```python manage.py runserver```
+
+6. Open http://localhost:5000 and start to inject XSS Script on any form-type founded on the site.
